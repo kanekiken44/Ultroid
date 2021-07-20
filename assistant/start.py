@@ -106,7 +106,7 @@ async def closec(fuk):
 async def alive(event):
     if event.is_group:
         return
-    await event.edit(
+    await event.reply_photo(
         BOT_PIC,
         buttons=[Button.inline("My master", url="https://t.me/loneghoul")],
     )
@@ -128,7 +128,7 @@ async def ultroid(event):
             if not udB.get("STARTMSG"):
                 if udB.get("PMBOT") == "True":
                     ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
-                await event.reply(
+                await event.reply_photo(
                     BOT_PIC, caption=BOT_MSG
                     buttons=_user, 
                 )
