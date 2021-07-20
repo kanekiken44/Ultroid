@@ -17,13 +17,27 @@ from plugins import *
 
 from . import *
 
+BOT_PIC = "https://telegra.ph/file/fdf540db667d7a447160b.jpg"
+
+BOT_MSG = f"""
+ＨＥＬＬＯ  ＶＭＲＯ!!
+I'm personal assistant of @loneghoul 
+Press below button to know more about kaneki
+"""
+
 Owner_info_msg = f"""
 <strong>Owner</strong> - {OWNER_NAME}
 <stong>OwnerID</strong> - <code>{OWNER_ID}</code>
+<strong>Username</strong> - @loneghoul
 
-<strong>Message Forwards</strong> - {udB.get("PMBOT")}
+Ntg much just a guy who loves anime and coding 
+Join @nezuko_support for knowing about our grp management bot
+"""
 
-<stong>Ultroid <a href=https://github.com/TeamUltroid/Ultroid>[v{ultroid_version}]</a>, powered by @TeamUltroid</strong>
+Commands_start_msg = f"""
+•/start to start me.
+•/contact to contact my master.
+•/alive to check bot is alive or not.
 """
 
 _settings = [
@@ -38,6 +52,11 @@ _settings = [
     [Button.inline("Fᴇᴀᴛᴜʀᴇs", data="otvars")],
     [Button.inline("VC Sᴏɴɢ Bᴏᴛ", data="vcb")],
     [Button.inline("« Bᴀᴄᴋ", data="mainmenu")],
+]
+
+_user = [
+    [Button.inline("Commands", data="commands")],
+    [Button.inline("Info", data="ownerinfo")],
 ]
 
 _start = [
@@ -68,6 +87,31 @@ async def closet(lol):
     await lol.delete()
 
 
+@callback("commands")
+async def com(event):
+    await event.edit(
+        Commands_start_msg,
+        buttons=[Button.inline("Close", data=f"closeitlel")],
+        link_preview=False,
+        parse_mode="html",
+    )
+
+
+@callback("closeitlel")
+async def closec(fuk):
+    await ful.delete()
+
+
+@asst_cmd("alive ?(.*)")
+async def alive(event):
+    if event.is_group:
+        return
+    await event.edit(
+        BOT_PIC,
+        buttons=[Button.inline("My master", url="https://t.me/loneghoul")],
+    )
+              
+
 @asst_cmd("start ?(.*)")
 async def ultroid(event):
     if event.is_group:
@@ -85,8 +129,8 @@ async def ultroid(event):
                 if udB.get("PMBOT") == "True":
                     ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
                 await event.reply(
-                    f"Heyo, [{get_display_name(u)}](tg://user?id={u.id}), I'm kagune Assistant of [{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.uid})!\n\n{ok}",
-                    buttons=[Button.inline("Info", data="ownerinfo")],
+                    BOT_PIC, caption=BOT_MSG
+                    buttons=_user, 
                 )
             else:
                 me = f"[{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.uid})"
