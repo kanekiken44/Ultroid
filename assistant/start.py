@@ -17,6 +17,8 @@ from plugins import *
 
 from . import *
 
+PIC = "https://novocom.top/view/0e3076-wallpaper-kaneki-aesthetic-pfp/"
+
 Owner_info_msg = f"""
 <strong>Owner</strong> - {OWNER_NAME}
 <stong>OwnerID</strong> - <code>{OWNER_ID}</code>
@@ -90,6 +92,7 @@ async def ultroid(event):
                 me = f"[{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.uid})"
                 mention = f"[{get_display_name(u)}](tg://user?id={u.id})"
                 await event.reply(
+                    file=PIC
                     Redis("STARTMSG").format(me=me, mention=mention),
                     buttons=[Button.inline("Info.", data="ownerinfo")],
                 )
