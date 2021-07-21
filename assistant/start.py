@@ -91,7 +91,7 @@ async def ultroid(event):
             else:
                 me = f"[{ultroid_bot.me.first_name}](tg://user?id={ultroid_bot.uid})"
                 mention = f"[{get_display_name(u)}](tg://user?id={u.id})"
-                await bot.send_message(
+                await asst.send_message(
                     file=PIC
                     Redis("STARTMSG").format(me=me, mention=mention),
                     buttons=[Button.inline("Info.", data="ownerinfo")],
