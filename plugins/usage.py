@@ -71,7 +71,7 @@ def simple_usage():
     TOTAL = humanbytes(total)
     USED = humanbytes(used)
     FREE = humanbytes(free)
-    return get_string("usage_simple").format(
+    return get_string("usage").format(
         TOTAL,
         USED,
         FREE,
